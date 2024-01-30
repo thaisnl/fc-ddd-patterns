@@ -1,3 +1,4 @@
+import { IDomainEvent } from "../domain/domain-event.interface";
 import EventDispatcherInterface from "./event-dispatcher.interface";
 import EventHandlerInterface from "./event-handler.interface";
 import eventInterface from "./event.interface";
@@ -29,7 +30,7 @@ export default class EventDispatcher implements EventDispatcherInterface {
     this.eventHandlers = {};
   }
 
-  notify(event: eventInterface): void {
+  notify(event: IDomainEvent): void {
     const eventName = event.constructor.name;
     if (this.eventHandlers[eventName]) {
       this.eventHandlers[eventName].forEach((eventHandler) => {

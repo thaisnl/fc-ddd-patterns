@@ -1,22 +1,24 @@
+import EnviaConsoleLog1Handler from "../event/handler/send-console-log-1-when-customer-created.handler";
 import Address from "../value-object/address";
 import Customer from "./customer";
+import "../../../index"
 
 describe("Customer unit tests", () => {
   it("should throw error when id is empty", () => {
     expect(() => {
-      let customer = new Customer("", "John");
+      let customer = Customer.create("", "John");
     }).toThrowError("Id is required");
   });
 
   it("should throw error when name is empty", () => {
     expect(() => {
-      let customer = new Customer("123", "");
+      let customer = Customer.create("123", "");
     }).toThrowError("Name is required");
   });
 
   it("should change name", () => {
     // Arrange
-    const customer = new Customer("123", "John");
+    const customer = Customer.create("123", "John");
 
     // Act
     customer.changeName("Jane");
