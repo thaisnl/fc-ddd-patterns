@@ -4,8 +4,9 @@ import OrderItemModel from "./order-item.model";
 import OrderModel from "./order.model";
 import ProductModel from "../../../product/repository/sequelize/product.model";
 import { Sequelize, Op } from 'sequelize';
+import OrderRepositoryInterface from "../../../../domain/checkout/repository/order-repository.interface";
 
-export default class OrderRepository {
+export default class OrderRepository implements OrderRepositoryInterface{
   async create(entity: Order): Promise<void> {
     await OrderModel.create(
       {
